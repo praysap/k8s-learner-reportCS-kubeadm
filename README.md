@@ -48,10 +48,20 @@ docker push praysap/learner-frontend:latest
 <img width="944" height="434" alt="image" src="https://github.com/user-attachments/assets/ea646965-0d78-47ac-9080-3c044fe3ef77" />
 <img width="941" height="177" alt="image" src="https://github.com/user-attachments/assets/ecb46d95-6905-4f39-8f0c-846770bbfe25" />
 
-
+###
+ 1. Install Helm CLI
+```bash
+On Linux/macOS:
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+```
+ 1. Install Helm CLI
+```bash
+On Windows (via Chocolatey):
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+```
 ### Deploy with Helm
 ```bash
-got mern-chart dir
+cd mern-app dir
 helm upgrade --install mern-app . --namespace mern --create-namespace
 ```
 ### Verify Deployment
@@ -96,9 +106,9 @@ kubectl port-forward svc/mongo 28017:27017 -n mern
 ```
 Frontend App available at: http://10.228.12.107:31063<br>
 
-<img width="1913" height="997" alt="image" src="https://github.com/user-attachments/assets/b99eabd2-45f7-47fa-b0bc-78533f55a6df" />
-<img width="1917" height="993" alt="image" src="https://github.com/user-attachments/assets/1d4cdccb-de77-482f-91f4-c692f5e98694" />
-<img width="1919" height="996" alt="image" src="https://github.com/user-attachments/assets/7262e7b8-9d4c-4b94-8f44-73686840677a" />
+<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/b99eabd2-45f7-47fa-b0bc-78533f55a6df" />
+<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/1d4cdccb-de77-482f-91f4-c692f5e98694" />
+<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/7262e7b8-9d4c-4b94-8f44-73686840677a" />
 
 
 
@@ -107,7 +117,7 @@ Frontend App available at: http://10.228.12.107:31063<br>
 
 Backend App available at: http://10.228.12.107:30585<br>
 
-<img width="1919" height="555" alt="image" src="https://github.com/user-attachments/assets/f391ee13-f16d-48e8-a147-652a92828c19" />
+<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/f391ee13-f16d-48e8-a147-652a92828c19" />
 
 
 
