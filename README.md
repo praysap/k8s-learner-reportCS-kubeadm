@@ -33,8 +33,8 @@ kube-assignments/<br>
 
 ```bash
 go to frontend_kube dir
-docker build -t vipulsaw123/frontend:latest .
-docker push vipulsaw123/frontend:latest
+docker build -t praysap/learner-frontend:latest .
+docker push praysap/learner-frontend:latest
 ```
 <img width="944" height="441" alt="image" src="https://github.com/user-attachments/assets/ef1191ce-0114-461f-a9bf-e604704851ef" />
 
@@ -42,8 +42,8 @@ docker push vipulsaw123/frontend:latest
 ### Backend
 ```bash
 go to backend_kube dir
-docker build -t vipulsaw123/backend:latest .
-docker push vipulsaw123/backend:latest
+docker build -t praysap/learner-frontend:latest .
+docker push praysap/learner-frontend:latest
 ```
 <img width="944" height="434" alt="image" src="https://github.com/user-attachments/assets/ea646965-0d78-47ac-9080-3c044fe3ef77" />
 <img width="941" height="177" alt="image" src="https://github.com/user-attachments/assets/ecb46d95-6905-4f39-8f0c-846770bbfe25" />
@@ -59,6 +59,24 @@ helm upgrade --install mern-app . --namespace mern --create-namespace
 kubectl get all -n mern
 ```
 - Make sure all pods are 1/1 READY and services are running (frontend-service, backend-service, mongo).  
+---
+### Delete All Resources in Namespace
+```bash
+kubectl delete all --all -n mern
+```
+- This deletes:
+
+Pods
+
+Services
+
+Deployments
+
+ReplicaSets
+
+Any other workload in that namespace
+
+  
 ---
 #### Minikube [local]
 
@@ -76,17 +94,24 @@ kubectl port-forward svc/frontend-service 8080:80 -n mern
 kubectl port-forward svc/backend-service 3000:3000 -n mern
 kubectl port-forward svc/mongo 28017:27017 -n mern
 ```
-Frontend App available at: http://localhost:8080<br>
+Frontend App available at: http://10.228.12.107:31063<br>
 
-<img width="955" height="472" alt="image" src="https://github.com/user-attachments/assets/e76ba76f-db73-4c74-b985-d398d8d0da07" />
-
-
-Backend App available at: http://localhost:3000<br>
-
-<img width="953" height="169" alt="image" src="https://github.com/user-attachments/assets/ebb491d0-8f66-4abb-b1c5-49b3d1f6453d" />
+<img width="1913" height="997" alt="image" src="https://github.com/user-attachments/assets/b99eabd2-45f7-47fa-b0bc-78533f55a6df" />
+<img width="1917" height="993" alt="image" src="https://github.com/user-attachments/assets/1d4cdccb-de77-482f-91f4-c692f5e98694" />
+<img width="1919" height="996" alt="image" src="https://github.com/user-attachments/assets/7262e7b8-9d4c-4b94-8f44-73686840677a" />
 
 
-Mongo DB available at: mongodb://localhost:28017<br>
+
+
+
+
+Backend App available at: http://10.228.12.107:30585<br>
+
+<img width="1919" height="555" alt="image" src="https://github.com/user-attachments/assets/f391ee13-f16d-48e8-a147-652a92828c19" />
+
+
+
+Mongo DB available at: mongodb://localhost:27017<br>
 
 ### Test via Port Forwarding [Ec-2/Ubuntu]
 ```bash
