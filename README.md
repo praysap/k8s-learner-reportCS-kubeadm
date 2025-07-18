@@ -8,7 +8,9 @@ This repository contains a complete Kubernetes deployment setup for a MERN (Mong
 ---
 
 ## 📁 Project Structure
-├── k8s/                                     # Raw Kubernetes YAML files (if any)
+
+```text
+├── k8s/                                    # Raw Kubernetes YAML files (if any)
 ├── learnerReportCS_backend/                # Source code for backend (Express.js / Node.js)
 ├── learnerReportCS_frontend/               # Source code for frontend (React.js)
 ├── mern-chart/                             # Helm chart for deploying the entire MERN stack
