@@ -8,21 +8,20 @@ This repository contains a complete Kubernetes deployment setup for a MERN (Mong
 ---
 
 ## 📁 Project Structure
-├── k8s/
-├── learnerReportCS_backend/               # Backend K8s manifests<br> 
-├── learnerReportCS_frontend               # Frontend K8s manifests<br> 
-├── mern-chart/                            # Helm chart for the MERN stack<br>
-│   ├── templates/<br>
-│   │   ├── backend.yaml<br>
-│   │   ├── frontend.yaml<br>
-│   │   ├── mongo.yaml<br>
-│   │   ├── secrets.yaml<br>               ✅ Secret manifest added here
-│   ├── Chart.yaml<br>
-│   └── values.yaml<br>
-├── jenkinsfile
-└── README.md
-          
-- You need to clone backend & frontend repos inside project directory if you want it to work locally.
+├── k8s/                                     # Raw Kubernetes YAML files (if any)
+├── learnerReportCS_backend/                # Source code for backend (Express.js / Node.js)
+├── learnerReportCS_frontend/               # Source code for frontend (React.js)
+├── mern-chart/                             # Helm chart for deploying the entire MERN stack
+│   ├── templates/                          # All Kubernetes manifests used by Helm
+│   │   ├── backend.yaml                    # Backend Deployment & Service
+│   │   ├── frontend.yaml                   # Frontend Deployment & Service
+│   │   ├── mongo.yaml                      # MongoDB Deployment & Service
+│   │   ├── secrets.yaml                    # Secret manifest for sensitive env variables ✅
+│   ├── Chart.yaml                          # Helm chart metadata file
+│   └── values.yaml                         # Configurable values (image, ports, env, etc.)
+├── jenkinsfile                             # CI/CD pipeline for Jenkins
+└── README.md                               # Project documentation (you are here!)
+
 ---
 
 
