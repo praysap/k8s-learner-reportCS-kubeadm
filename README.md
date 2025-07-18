@@ -1,13 +1,13 @@
-# Kubernetes Deployment with Helm and Jenkins [MERN Stack]
+# 🚀 Kubernetes MERN Stack Deployment using Helm & Jenkins
 
 This repository contains a complete Kubernetes deployment setup for a MERN (MongoDB, Express.js, React, Node.js) application using:
-- **Kubernetes** for container orchestration
-- **Helm** for templated, reusable Kubernetes manifests
-- **Docker** for containerizing the applications
-- **Jenkins** (optional) for CI/CD automation
+- 🧠 **Kubernetes** for container orchestration
+- 📦 **Helm** for templated, reusable Kubernetes manifests
+- 🐳 **Docker** for containerizing the applications
+- ⚙️ **Jenkins** (optional) for CI/CD automation
 ---
 
-## Directory Structure
+## 📁 Project Structure
 kube-assignments/<br>
 ├── backend_kube/         # Kubernetes manifests for the backend<br>
 │   
@@ -26,25 +26,25 @@ kube-assignments/<br>
 - You need to clone backend & frontend repos inside project directory if you want it to work locally.
 ---
 
-## Docker Image Build & Push
+## 🐳 Docker Image Build & Push
 
 
-### Build the Docker image(frontend)
+### 🐳 Build the Docker image (frontend)
 ```bash
 docker image build --no-cache --build-arg REACT_APP_API_BASE_URL=http://10.228.12.107:30585 -t praysap/learner-frontend:latest .
 ```
-### Push the image to Docker Hub
+### 🐳 Push the image to Docker Hub
 ```bash
 docker push praysap/learner-frontend:latest
 ```
 <img width="944" height="441" alt="image" src="https://github.com/user-attachments/assets/ef1191ce-0114-461f-a9bf-e604704851ef" />
 
 
-### Build the Docker image(backend)
+### 🐳 Build the Docker image (backend)
 ```bash
 docker build -t praysap/learner-backend:latest .
 ```
-### Push the image to Docker Hub
+### 🐳 Push the image to Docker Hub
 ```bash
 docker push praysap/learner-backend:latest
 ```
@@ -52,11 +52,11 @@ docker push praysap/learner-backend:latest
 <img width="941" height="177" alt="image" src="https://github.com/user-attachments/assets/ecb46d95-6905-4f39-8f0c-846770bbfe25" />
 
 
- ###  Install Helm CLI on Linux/mascOS
+ ### 📥 Install Helm CLI on Linux/mascOS
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
-###  Install Helm on On Windows (via Chocolatey):
+### 📥 Install Helm on On Windows (via Chocolatey):
 ```bash
 choco install kubernetes-helm
 ```
@@ -64,11 +64,11 @@ choco install kubernetes-helm
 choco install kubernetes-helm
 ```
 ---
-### Create a New Helm Chart
+### 🛠 Create Helm Chart
 ```bash
 helm create mern-app
 ```
-### Deployment with Helm
+### 🚀 Deployment with Helm
 ```bash
 cd mern-app dir
 ```
@@ -76,15 +76,22 @@ cd mern-app dir
 helm upgrade --install mern-app . --namespace mern --create-namespace
 ```
 ---
-
-### Verify Deployment
+### ✅ Get running pods
+```bash
+kubectl get pods -n mern
+``` 
+---
+### ✅ Verify Deployment
 ```bash
 kubectl get all -n mern
 ```
 - Make sure all pods are 1/1 READY and services are running (frontend-service, backend-service, mongo).  
 ---
-
-### Delete All Resources in Namespace
+### 🔁 Access a running pod (e.g. frontend)
+```bash
+kubectl exec -it frontend-deployment-67f9fbc9f6-pt6wq -n mern -- /bin/sh
+``` 
+### 🧪 Delete All Resources in Namespace
 ```bash
 kubectl delete all --all -n mern
 ```
@@ -105,7 +112,7 @@ Any other workload in that namespace
 <img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/6e02e259-0119-43c0-88d2-e2430cba0f1b" />
 
 
-## Access the App 
+## 🌐 Access the App 
 ### Test via Port Forwarding [Local]
 ```bash
 kubectl port-forward svc/frontend-service 8080:80 -n mern
@@ -155,7 +162,7 @@ REACT_APP_API_BASE_URL=http://localhost:3000
 ```
 ---
 
-## Jenkins configuration
+## ⚙️ Jenkins configuration
 ### Pipeline setup
 1. Create Jenkinsfile inside your project directory.
 2. Create dockerhub credentials in jenkins.
