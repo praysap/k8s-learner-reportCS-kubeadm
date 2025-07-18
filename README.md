@@ -7,8 +7,7 @@ This repository contains a complete Kubernetes deployment setup for a MERN (Mong
 - ⚙️ **Jenkins** (optional) for CI/CD automation
 ---
 
-## 📁 Project Structure
-
+### 📁 Project Structure
 ```text
 ├── k8s/                                    # Raw Kubernetes YAML files (if any)
 ├── learnerReportCS_backend/                # Source code for backend (Express.js / Node.js)
@@ -23,10 +22,8 @@ This repository contains a complete Kubernetes deployment setup for a MERN (Mong
 │   └── values.yaml                         # Configurable values (image, ports, env, etc.)
 ├── jenkinsfile                             # CI/CD pipeline for Jenkins
 └── README.md                               # Project documentation (you are here!)
-
+```
 ---
-
-
 
 ###  Build the Docker image (frontend)
 ```bash
