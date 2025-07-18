@@ -29,21 +29,24 @@ kube-assignments/<br>
 ## Docker Image Build & Push
 
 
-### Frontend
-
+### Build the Docker image(frontend)
 ```bash
-go to frontend_kube dir
-docker build -t praysap/learner-frontend:latest .
+docker image build --no-cache --build-arg REACT_APP_API_BASE_URL=http://10.228.12.107:30585 -t praysap/learner-frontend:latest .
+```
+### Push the image to Docker Hub
+```bash
 docker push praysap/learner-frontend:latest
 ```
 <img width="944" height="441" alt="image" src="https://github.com/user-attachments/assets/ef1191ce-0114-461f-a9bf-e604704851ef" />
 
 
-### Backend
+### Build the Docker image(backend)
 ```bash
-go to backend_kube dir
-docker build -t praysap/learner-frontend:latest .
-docker push praysap/learner-frontend:latest
+docker build -t praysap/learner-backend:latest .
+```
+### Push the image to Docker Hub
+```bash
+docker push praysap/learner-backend:latest
 ```
 <img width="944" height="434" alt="image" src="https://github.com/user-attachments/assets/ea646965-0d78-47ac-9080-3c044fe3ef77" />
 <img width="941" height="177" alt="image" src="https://github.com/user-attachments/assets/ecb46d95-6905-4f39-8f0c-846770bbfe25" />
@@ -57,8 +60,14 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 ```bash
 choco install kubernetes-helm
 ```
+```bash
+choco install kubernetes-helm
+```
 ---
-
+### Create a New Helm Chart
+```bash
+helm create mern-app
+```
 ### Deployment with Helm
 ```bash
 cd mern-app dir
@@ -109,15 +118,9 @@ Frontend App available at: http://10.228.12.107:31063<br>
 <img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/1d4cdccb-de77-482f-91f4-c692f5e98694" />
 <img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/7262e7b8-9d4c-4b94-8f44-73686840677a" />
 
-
-
-
-
-
 Backend App available at: http://10.228.12.107:30585<br>
 
 <img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/f391ee13-f16d-48e8-a147-652a92828c19" />
-
 
 
 Mongo DB available at: mongodb://localhost:27017<br>
