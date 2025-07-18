@@ -48,45 +48,44 @@ docker push praysap/learner-frontend:latest
 <img width="944" height="434" alt="image" src="https://github.com/user-attachments/assets/ea646965-0d78-47ac-9080-3c044fe3ef77" />
 <img width="941" height="177" alt="image" src="https://github.com/user-attachments/assets/ecb46d95-6905-4f39-8f0c-846770bbfe25" />
 
-###
- 1. Install Helm CLI
+
+ ###  Install Helm CLI on Linux/mascOS
 ```bash
-On Linux/macOS:
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
- 1. Install Helm CLI
+###  Install Helm on On Windows (via Chocolatey):
 ```bash
-On Windows (via Chocolatey):
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+choco install kubernetes-helm
 ```
-### Deploy with Helm
+---
+
+### Deployment with Helm
 ```bash
 cd mern-app dir
+```
+```bash
 helm upgrade --install mern-app . --namespace mern --create-namespace
 ```
+---
+
 ### Verify Deployment
 ```bash
 kubectl get all -n mern
 ```
 - Make sure all pods are 1/1 READY and services are running (frontend-service, backend-service, mongo).  
 ---
+
 ### Delete All Resources in Namespace
 ```bash
 kubectl delete all --all -n mern
 ```
-- This deletes:
-
+This deletes:
 Pods
-
 Services
-
 Deployments
-
 ReplicaSets
-
 Any other workload in that namespace
 
-  
 ---
 #### Minikube [local]
 
@@ -106,9 +105,9 @@ kubectl port-forward svc/mongo 28017:27017 -n mern
 ```
 Frontend App available at: http://10.228.12.107:31063<br>
 
-<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/b99eabd2-45f7-47fa-b0bc-78533f55a6df" />
-<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/1d4cdccb-de77-482f-91f4-c692f5e98694" />
-<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/7262e7b8-9d4c-4b94-8f44-73686840677a" />
+<img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/b99eabd2-45f7-47fa-b0bc-78533f55a6df" />
+<img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/1d4cdccb-de77-482f-91f4-c692f5e98694" />
+<img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/7262e7b8-9d4c-4b94-8f44-73686840677a" />
 
 
 
@@ -117,7 +116,7 @@ Frontend App available at: http://10.228.12.107:31063<br>
 
 Backend App available at: http://10.228.12.107:30585<br>
 
-<img width="939" height="254" alt="image" src="https://github.com/user-attachments/assets/f391ee13-f16d-48e8-a147-652a92828c19" />
+<img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/f391ee13-f16d-48e8-a147-652a92828c19" />
 
 
 
@@ -129,13 +128,6 @@ kubectl port-forward svc/frontend-service -n mern 8080:80 --address=0.0.0.0
 kubectl port-forward svc/backend-service -n mern 3000:3000 --address=0.0.0.0
 kubectl port-forward svc/mongo 28017:27017 -n mern
 ```
-Frontend App available at: http://public-ip:8080<br>
-
-<img width="959" height="467" alt="image" src="https://github.com/user-attachments/assets/c0041147-ddd2-42e7-90c4-2b68b40ab7b9" />
-
-Backend App available at: http://public-ip:3000<br>
-
-<img width="959" height="176" alt="image" src="https://github.com/user-attachments/assets/35b885da-00ac-4da7-b25d-54b27c3e5a43" />
 
 Mongo DB available at: mongodb://public-ip:28017<br>
 
