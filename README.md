@@ -8,43 +8,41 @@ This repository contains a complete Kubernetes deployment setup for a MERN (Mong
 ---
 
 ## 📁 Project Structure
-kube-assignments/<br>
-├── backend_kube/         # Kubernetes manifests for the backend<br>
-│   
-├── frontend_kube/        # Kubernetes manifests for the frontend<br>
-│   
-├── mern-chart/           # Helm chart for the MERN stack<br>
-│   ├── templates/<br>
-│   │   ├── backend.yaml<br>
-│   │   ├── frontend.yaml<br>
-│   │   └── mongo.yaml<br>
-│   ├── Chart.yaml<br>
-│   └── values.yaml<br>
-├── jenkinsfile           
-└── README.md             
-
+├── k8s/
+├── learnerReportCS_backend/           # Backend K8s manifests
+├── learnerReportCS_frontend/          # Frontend K8s manifests
+├── mern-chart/                        # Helm chart for the MERN stack
+│   ├── templates/
+│   │   ├── backend.yaml
+│   │   ├── frontend.yaml
+│   │   ├── mongo.yaml
+│   │   ├── secrets.yaml               ✅ Secret manifest added here
+│   ├── Chart.yaml
+│   └── values.yaml
+├── jenkinsfile
+└── README.md
+          
 - You need to clone backend & frontend repos inside project directory if you want it to work locally.
 ---
 
-## 🐳 Docker Image Build & Push
 
 
-### 🐳 Build the Docker image (frontend)
+###  Build the Docker image (frontend)
 ```bash
 docker image build --no-cache --build-arg REACT_APP_API_BASE_URL=http://10.228.12.107:30585 -t praysap/learner-frontend:latest .
 ```
-### 🐳 Push the image to Docker Hub
+###  Push the image to Docker Hub
 ```bash
 docker push praysap/learner-frontend:latest
 ```
 <img width="944" height="441" alt="image" src="https://github.com/user-attachments/assets/ef1191ce-0114-461f-a9bf-e604704851ef" />
 
 
-### 🐳 Build the Docker image (backend)
+###  Build the Docker image (backend)
 ```bash
 docker build -t praysap/learner-backend:latest .
 ```
-### 🐳 Push the image to Docker Hub
+###  Push the image to Docker Hub
 ```bash
 docker push praysap/learner-backend:latest
 ```
@@ -61,7 +59,7 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 choco install kubernetes-helm
 ```
 ```bash
-choco install kubernetes-helm
+helm version
 ```
 ---
 ### 🛠 Create Helm Chart
@@ -79,30 +77,32 @@ helm upgrade --install mern-app . --namespace mern --create-namespace
 ### ✅ Get running pods
 ```bash
 kubectl get pods -n mern
-``` 
+```
+<img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/e6ea82e5-7c00-41ef-af29-d77eb47b2374" />
+
 ---
 ### ✅ Verify Deployment
 ```bash
 kubectl get all -n mern
 ```
-- Make sure all pods are 1/1 READY and services are running (frontend-service, backend-service, mongo).  
+- Make sure all pods are 1/1 READY and services are running (frontend-service, backend-service, mongo).
+<img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/0b610ea9-9fa1-4b86-9e39-87bd0c1d027f" />
+  
 ---
 ### 🔁 Access a running pod (e.g. frontend)
 ```bash
 kubectl exec -it frontend-deployment-67f9fbc9f6-pt6wq -n mern -- /bin/sh
-``` 
+```
+ <img width="939" height="450" alt="image" src="https://github.com/user-attachments/assets/69ecd42c-f198-4f1f-9d7c-9cfc71f7a2c6" />
+
+---
 ### 🧪 Delete All Resources in Namespace
 ```bash
 kubectl delete all --all -n mern
 ```
-This deletes:
-Pods
-Services
-Deployments
-ReplicaSets
-Any other workload in that namespace
-
+- This deletes:Pods,Services,Deployments,ReplicaSets and Any other workload in that namespace
 ---
+
 #### Minikube [local]
 
 <img width="939" height="238" alt="image" src="https://github.com/user-attachments/assets/7a4b26e1-69f7-47ad-a970-b5f6e741252d" />
